@@ -1,222 +1,176 @@
 # CodebaseGPT
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Chat-Codebase-FF6B6B?style=for-the-badge&logo=openai&logoColor=white" alt="AI">
+  <img src="https://img.shields.io/badge/AI-MiniMax%20M2.7-FF6B6B?style=for-the-badge&logo=openai&logoColor=white" alt="MiniMax M2.7">
   <img src="https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License">
+  <img src="https://img.shields.io/badge/Framework-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">
+  <img src="https://img.shields.io/badge/UI-Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
 </p>
 
-> 💬 **Chat with Your Codebase** - Understand entire repos with AI. Answers questions with citations, cross-references, and context.
+> 💬 **Chat with Your Codebase** - Ask questions about any codebase and get AI-powered answers with source code citations.
 
 ## ✨ Features
 
-### Understanding
-- 🔍 **Code Search** - Semantic search across all code
-- 📚 **Context Awareness** - Understands imports, inheritance
-- 🗺️ **Call Graphs** - How functions connect
-- 📝 **Documentation** - Reads docs alongside code
-- 🏷️ **Code Mapping** - Maps files to features
+- 🔍 **Semantic Code Search** - Find code using natural language
+- 💬 **Natural Language Queries** - Ask questions in plain English
+- 📚 **Cited Answers** - Every answer includes source code citations with file paths and line numbers
+- 🧠 **Chain-of-Thought Reasoning** - Uses MiniMax M2.7 thinking to provide detailed explanations
+- 🌐 **Web UI** - Beautiful Next.js interface
+- ⌨️ **CLI Tool** - Work from the command line
+- 📡 **REST API** - Integrate with other tools
 
-### Conversation
-- 💬 **Natural Language** - Ask in plain English
-- 📖 **Cited Answers** - Source code citations
-- 🔗 **Deep Links** - Click to source
-- 📊 **Metrics** - Code statistics on demand
-- 🛠️ **Refactoring** - Suggest improvements
+## 🚀 Quick Start
 
-### Indexing
-- 🐙 **GitHub** - Index repos from GitHub
-- 📁 **Local** - Index local directories
-- 🌐 **Enterprise** - Index private codebases
-- 🔄 **Auto-Sync** - Keep index updated
-
-## 🏗️ Architecture
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                      CodebaseGPT Architecture                    │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                   │
-│  ┌──────────────────────────────────────────────────────────┐   │
-│  │                    Query Interface                         │   │
-│  │  - Web UI (Next.js)                                        │   │
-│  │  - CLI Tool                                                │   │
-│  │  - API                                                     │   │
-│  │  - VS Code Extension                                       │   │
-│  └──────────────────────────────────────────────────────────┘   │
-│                             │                                    │
-│  ┌──────────────────────────┴──────────────────────────────────┐ │
-│  │                    Query Understanding                       │ │
-│  │  ┌──────────────────────────────────────────────────────┐   │ │
-│  │  │ LLM Agent                                               │   │ │
-│  │  │ - Intent classification                               │   │ │
-│  │  │ - Entity extraction (files, functions, concepts)      │   │ │
-│  │  │ - Follow-up questions                                 │   │ │
-│  │  └──────────────────────────────────────────────────────┘   │ │
-│  └──────────────────────────────────────────────────────────────┘ │
-│                             │                                    │
-│  ┌──────────────────────────┴──────────────────────────────────┐ │
-│  │                    Codebase Index                           │ │
-│  │  ┌───────────┐ ┌───────────┐ ┌───────────┐ ┌─────────────┐ │ │
-│  │  │  AST      │ │ Embeddings│ │   Git     │ │   Symbol    │ │ │
-│  │  │  Index    │ │  (Vector) │ │  History  │ │   Index     │ │ │
-│  │  └───────────┘ └───────────┘ └───────────┘ └─────────────┘ │ │
-│  └──────────────────────────────────────────────────────────────┘ │
-│                             │                                    │
-│  ┌──────────────────────────┴──────────────────────────────────┐ │
-│  │                    Retrieval & Generation                     │ │
-│  │  ┌──────────────────────────────────────────────────────┐   │ │
-│  │  │ Retrieval → LLM → Response + Citations                │   │ │
-│  │  └──────────────────────────────────────────────────────┘   │ │
-│  └──────────────────────────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-## 📦 Installation
+### 1. Install Dependencies
 
 ```bash
-git clone https://github.com/moggan1337/CodebaseGPT.git
-cd CodebaseGPT
-
 # Backend
 pip install -r requirements.txt
-cp .env.example .env
-# Configure ANTHROPIC_API_KEY or OPENAI_API_KEY
 
 # Frontend
-cd frontend && npm install
-
-# Index a codebase
-codebase index ./my-project
-
-# Start server
-uvicorn api.main:app --reload
+cd frontend && npm install && cd ..
 ```
 
-## 🚀 Usage
-
-### CLI
+### 2. Set API Key
 
 ```bash
-# Index a project
-codebase index ./my-project --name "my-project"
-
-# Ask questions
-codebase ask "How does authentication work?"
-codebase ask "Where is the user model defined?"
-codebase ask "What does the payment processing flow look like?"
-
-# Search
-codebase search "authentication middleware"
+export MINIMAX_API_KEY=your_minimax_api_key
 ```
 
-### Web UI
+### 3. Start the Backend
 
 ```bash
-# Start web interface
+uvicorn api.main:app --reload --port 8000
+```
+
+### 4. Start the Frontend (optional)
+
+```bash
 cd frontend && npm run dev
 # Open http://localhost:3000
 ```
 
-### Python API
+### 5. Index and Query
 
-```python
-from codebase_gpt import CodebaseQa
+```bash
+# Index a codebase
+curl -X POST "http://localhost:8000/index/local?path=/path/to/your/code"
 
-qa = CodebaseQa("./my-project")
-response = qa.ask("How does the caching layer work?")
+# Ask a question
+curl -X POST "http://localhost:8000/query" \
+  -H "Content-Type: application/json" \
+  -d '{"question": "How does authentication work?", "include_thinking": true}'
+```
 
-print(response.answer)
-# "The caching layer uses Redis with a TTL of 3600 seconds..."
+## 📦 CLI Usage
 
-for citation in response.citations:
-    print(f"Line {citation.line_number}: {citation.file}")
-    print(f">>> {citation.snippet}")
+```bash
+# Index a project
+python -m cli.main index ./my-project
+
+# Ask questions
+python -m cli.main ask ./my-project "How does authentication work?"
+python -m cli.main ask ./my-project "Where is the user model defined?"
+
+# Search code
+python -m cli.main search ./my-project "authentication"
+
+# View stats
+python -m cli.main stats ./my-project
+```
+
+## 🌐 Web UI
+
+The frontend provides an interactive chat interface:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open http://localhost:3000 to:
+1. Enter a codebase path and click "Index"
+2. Ask questions in the chat
+3. View citations and thinking
+
+## 📡 API Reference
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `GET /` | GET | API info |
+| `GET /health` | GET | Health check |
+| `POST /index/local?path=X` | POST | Index a directory |
+| `POST /index/file` | POST | Upload and index a file |
+| `POST /query` | POST | Query with JSON body `{"question": "...", "include_thinking": true}` |
+| `GET /search?q=X&limit=10` | GET | Search code |
+| `GET /stats` | GET | Index statistics |
+| `POST /export?path=X` | POST | Export index to JSON |
+| `POST /import?path=X` | POST | Import index from JSON |
+
+## 🔧 Configuration
+
+Environment variables (in `.env`):
+
+```bash
+# LLM Provider (MiniMax default)
+MINIMAX_API_KEY=your_api_key
+MINIMAX_MODEL=MiniMax-M2.7
+
+# Alternative providers
+OPENAI_API_KEY=your_openai_key
+OPENAI_MODEL=gpt-4o
+
+ANTHROPIC_API_KEY=your_anthropic_key
+ANTHROPIC_MODEL=claude-sonnet-4-6
+
+# Indexing
+CHUNK_SIZE=1000
+CHUNK_OVERLAP=100
+MAX_FILE_SIZE_MB=10
 ```
 
 ## 📁 Project Structure
 
 ```
-codebase-gpt/
-├── api/
-│   ├── main.py              # FastAPI app
-│   ├── indexer/              # Code indexing
-│   │   ├── parser.py         # AST parsing
-│   │   ├── embedder.py       # Embedding generation
-│   │   └── indexer.py        # ChromaDB/PGVector
-│   ├── agents/
-│   │   └── query_agent.py    # LLM query handling
-│   └── routes/
-│       ├── query.py          # Query endpoints
-│       └── index.py          # Index endpoints
-├── frontend/
-│   ├── app/                 # Next.js app
-│   ├── components/
+CodebaseGPT/
+├── api/                    # FastAPI backend
+│   ├── main.py             # App entry point
+│   ├── config.py            # Settings
+│   ├── routes/              # API endpoints
+│   │   └── index.py         # /index, /query, /search
+│   ├── indexer/             # Code parsing
+│   │   └── code_indexer.py  # Chunking & language detection
+│   └── services/            # LLM integration
+│       ├── llm.py           # Multi-provider (MiniMax, OpenAI, Anthropic)
+│       └── query_agent.py   # Query handling with citations
+├── cli/                     # CLI tool
+│   └── main.py              # Click-based commands
+├── frontend/                # Next.js UI
+│   ├── app/                # Pages and layouts
+│   │   ├── layout.tsx
+│   │   ├── page.tsx        # Main chat UI
+│   │   └── globals.css
 │   └── lib/
-├── cli/
-│   └── main.py              # CLI tool
-├── examples/
-│   └── integrations/
-└── tests/
-```
-
-## 🔧 Configuration
-
-```yaml
-# config.yaml
-llm:
-  provider: anthropic  # or openai
-  model: claude-sonnet-4-6  # or gpt-4o
-  temperature: 0.3
-
-indexing:
-  chunk_size: 1000
-  chunk_overlap: 100
-  exclude:
-    - "*.test.ts"
-    - "node_modules/**"
-    - "dist/**"
-
-vector_db:
-  type: chroma  # or pgvector
-  persist_directory: .codebase/index
+│       └── api.ts          # API client
+├── requirements.txt
+├── README.md
+└── CLAUDE.md
 ```
 
 ## 🧪 Testing
 
 ```bash
-# Run all tests
+# Run tests
 pytest tests/ -v
-
-# Test with specific repo
-pytest tests/test_indexer.py -v --repo ./test-project
-
-# Test query accuracy
-pytest tests/test_accuracy.py -v
 ```
 
-## 📚 Documentation
+## 📝 License
 
-- [Installation Guide](docs/installation.md)
-- [Quick Start](docs/quickstart.md)
-- [CLI Reference](docs/cli.md)
-- [API Reference](docs/api.md)
-- [Integrations](docs/integrations.md)
-- [Deployment](docs/deployment.md)
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch
-3. Add tests
-4. Submit PR
-
-## 📄 License
-
-MIT License
+MIT
 
 ---
 
 <p align="center">
-  Ask anything about your codebase
+  Built with ❤️ and MiniMax M2.7
 </p>
